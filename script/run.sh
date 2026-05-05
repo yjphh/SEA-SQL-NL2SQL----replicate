@@ -1,14 +1,14 @@
-tables="../DAMO-ConvAI/bird/llm/data/dev/dev_tables.json"
-dev_path="../DAMO-ConvAI/bird/llm/data/dev/dev.json"
-db_path="../DAMO-ConvAI/bird/llm/data/dev/dev_databases"
+tables="./data/dev/dev_tables.json"
+dev_path="./data/dev/dev.json"
+db_path="./data/dev/dev_databases"
 model_name="./bias_eliminator"
 cache_dir="./data/LMs"
 PROCESS_NUM=1
-API_CALL_NUM=100
-GPU_NUM=8
+API_CALL_NUM=1
+GPU_NUM=1
 
-short_model_name='gpt-3.5-turbo-0613'
-long_model_name='gpt-3.5-turbo-16k-0613'
+short_model_name='glm-4.7'
+long_model_name='glm-4.7'
 
 first_output_path="./intermediate_datasets/first_round_test.sql"
 second_output_path="./intermediate_datasets/second_round.sql"
@@ -59,7 +59,7 @@ python src/second_round.py \
     --output_path $second_output_path \
     --db_path $db_path \
     --num_gpus $GPU_NUM \
-    --model_name %model_name
+    --model_name $model_name
 
 echo "third round..."
 python src/third_round.py \
@@ -76,7 +76,7 @@ python src/third_round.py \
 echo "generate standard output..."
 python src/append_db_id.py \
     --dev_path $dev_path \
-    --input_path $first_output_path \
+    --input_path $third_output_path \
     --output_path $final_output_path
 
 if [ ! -d "$third_output_path" ]; then

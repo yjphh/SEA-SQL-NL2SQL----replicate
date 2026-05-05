@@ -11,5 +11,4 @@ pandas==2.2.1
 sqlglot==22.1.1
 rank_bm25==0.2.2
 peft==0.10.0
-flash-attn
 deepspeed

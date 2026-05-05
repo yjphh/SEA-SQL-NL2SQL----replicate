@@ -83,7 +83,7 @@ def package_sqls(sql_path, db_root_path, mode='gpt', data_mode='dev'):
         sql_data = json.load(open(sql_path + 'predict_' + data_mode + '.json', 'r'))
         for idx, sql_str in sql_data.items():
             if type(sql_str) == str:
-                sql, db_name = sql_str.split('\t----- bird -----\t')
+                sql, db_name = sql_str.split('\t----- spider -----\t')
             else:
                 sql, db_name = " ", "financial"
             clean_sqls.append(sql)

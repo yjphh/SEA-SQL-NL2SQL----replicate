@@ -15,8 +15,8 @@ def parse_option():
     parser = argparse.ArgumentParser("")
 
     parser.add_argument('--dev_path', type=str, default="dev.json")
-    parser.add_argument('--short_model_name', type=str, default="gpt-3.5-turbo-0613")
-    parser.add_argument('--long_model_name', type=str, default="gpt-3.5-turbo-16k-0613")
+    parser.add_argument('--short_model_name', type=str, default="glm-4.7")
+    parser.add_argument('--long_model_name', type=str, default="glm-4.7")
     parser.add_argument('--data_path', type=str, default="../generate_datasets_bird/preprocessed_data.json")
     parser.add_argument('--output_path', type=str, default="../intermediate_datasets_bird/first_round.sql")
     parser.add_argument('--process_num', type=int, default=1)
@@ -27,8 +27,8 @@ def parse_option():
 
 
 class SQLGenerateTool:
-    def __init__(self, short_model_name: str = "gpt-3.5-turbo-0613", long_model_name: str = "gpt-3.5-turbo-16k-0613"):
-        self.encoder = tiktoken.encoding_for_model("gpt-3.5-turbo")
+    def __init__(self, short_model_name: str = "glm-4.7", long_model_name: str = "glm-4.7"):
+        self.encoder = tiktoken.encoding_for_model("glm-4.7")
         self.prompt_template_kg = sql_simple_prompt_kg
         self.prompt_template = sql_simple_prompt
         self.llm = ChatOpenAI(temperature=0, model_name=short_model_name, request_timeout=60, max_retries=10)

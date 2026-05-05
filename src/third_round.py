@@ -21,8 +21,8 @@ def parse_option():
     parser.add_argument('--retry_num', type=int, default=10)
     parser.add_argument('--process_num', type=int, default=1)
     parser.add_argument('--schema_path', type=str, default=None)
-    parser.add_argument('--short_model_name', type=str, default="gpt-3.5-turbo-0613")
-    parser.add_argument('--long_model_name', type=str, default="gpt-3.5-turbo-16k-0613")
+    parser.add_argument('--short_model_name', type=str, default="glm-4.7")
+    parser.add_argument('--long_model_name', type=str, default="glm-4.7")
 
     opt = parser.parse_args()
 
@@ -30,8 +30,8 @@ def parse_option():
 
 
 class ReflectTool:
-    def __init__(self, short_model_name: str = "gpt-3.5-turbo-0613", long_model_name: str = "gpt-3.5-turbo-16k-0613"):
-        self.encoder = tiktoken.encoding_for_model("gpt-3.5-turbo")
+    def __init__(self, short_model_name: str = "glm-4.7", long_model_name: str = "glm-4.7"):
+        self.encoder = tiktoken.get_encoding("cl100k_base")
 
         self.prompt_template_kg = reflect_prompt_kg
         self.prompt_template = reflect_prompt

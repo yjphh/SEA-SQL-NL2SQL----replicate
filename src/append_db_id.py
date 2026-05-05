@@ -26,7 +26,7 @@ def main(opt):
 
     for i in range(len(sqls)):
         # sqls[i] = sqls[i] + '\t----- bird -----\t' + dev[i]['db_id']
-        sqls[i] = sqls[i].replace("|| ', ' ||", ", ").replace("|| ' ' ||", ", ") + '\t----- bird -----\t' + dev[i]['db_id']
+        sqls[i] = sqls[i].replace("|| ', ' ||", ", ").replace("|| ' ' ||", ", ") + '\t----- spider -----\t' + dev[i]['db_id']
 
 
     result = {}
