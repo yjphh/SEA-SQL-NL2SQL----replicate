@@ -127,3 +127,10 @@ If you find our work is helpful, please cite as:
 ## 👍Contributing
 
 We welcome contributions and suggestions!
+
+### 复现该论文模型的过程中，
+我将gpt3.5改成了openai兼容的glm4.7并调整了并发数、延迟参数;
+由于使用了spider数据集，原评估代码有所修改;
+first和third在本地wsl中调用glm的API跑，second租借阿里云ECS来跑（个人电脑GPU显存不够和wsl存在依赖安装失败的问题）;
+run.sh的最后一轮得到标准输出，原作者笔误用了first的初始sql，已修正;
+删除了一个依赖flash-attn
